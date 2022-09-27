@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ConstrucciónMatemática.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="construcci%C3%B3n-matem%C3%A1tica">Construcción Matemática</h1>
+<h2 id="modelaci%C3%B3n-matem%C3%A1tica">Modelación Matemática</h2>
+<blockquote>
+<p>Definición: Modelo</p>
+</blockquote>
+<pre><code>Representación simplificada de la realidad.
+
+Ejemplos:
+- Mapas
+- Pinturas
+</code></pre>
+<blockquote>
+<p>Definición: Modelo Matemático</p>
+</blockquote>
+<pre><code>Representación de un objeto o fenómeno utilizando un lenguaje simplificado (matemático).
+
+Características:
+- Identificación del problema.
+- Formulación de un objetivo.
+- Determinación de las herramientas matemáticas para resolverlo.
+- Validación y verificación del modelo.
+</code></pre>
+<h3 id="tipos-de-modelos">Tipos de modelos</h3>
+<h4 id="clasificaci%C3%B3n-de-los-modelos-matem%C3%A1ticos">Clasificación de los modelos matemáticos</h4>
+<ul>
+<li>Estáticos $\longrightarrow$ Cantidades que no cambian (Determinista)</li>
+<li>Dinámicos $\longrightarrow$ Cantidades que cambian (Probabilista)</li>
+</ul>
+<h3 id="%C2%BFcu%C3%A1l-ser%C3%ADa-el-mejor-modelo">¿Cuál sería el mejor modelo?</h3>
+<p>Aquel modelo más simple posible que reproduzca los resultados.</p>
+<h2 id="modelaci%C3%B3n-y-simulaci%C3%B3n">Modelación y Simulación</h2>
+<ul>
+<li>Definición del problema que será resuelto.</li>
+<li>Definición del sistemma (parte de la &quot;realidad&quot;) qué está involucrado en el problema.</li>
+</ul>
+<h3 id="an%C3%A1lisis-del-sistema">Análisis del sistema</h3>
+<ul>
+<li>Identificación de las partes del sistema que son relevantes para resolver el problema.</li>
+</ul>
+<h3 id="simulaci%C3%B3n">Simulación</h3>
+<ul>
+<li>Aplicación del modelo en cuestión.</li>
+<li>Elaboración de una estrategia para resolver el problema.</li>
+</ul>
+<h3 id="validaci%C3%B3n">Validación</h3>
+<ul>
+<li>Hacemos las siguientes preguntas.
+<ul>
+<li>¿La simulación resuelve el problema?</li>
+<li>¿Reproduce alguna parte de la realidad?</li>
+<li>¿El modelo reproduce los resultados del sistema?</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Definición: Simmulación</p>
+</blockquote>
+<pre><code>Es la aplicación del modelo con el objetivo de comparar sus resultados o predicaciones con el fenómeno en cuestión.
+</code></pre>
+<blockquote>
+<p>Definición: Sistema</p>
+</blockquote>
+<pre><code>El objeto o conjunto de ojetos que queremos estudiar.
+</code></pre>
+<h2 id="sistema-de-entrada-salida">Sistema de Entrada-Salida</h2>
+<p>$$\text{Entrada}\longrightarrow\text{Sistema}\longrightarrow\text{Salida}$$</p>
+<blockquote>
+<p>Definición: Modelo matemático</p>
+</blockquote>
+<pre><code>Un modelo matemático es una tupla (S, Q, M), donde S es un sistemma, Q es una pregunta o cuestión que se hace acerca del sistema S, y M es un conjunto de formulas matemáticas que se usan para responder a Q.
+</code></pre>
+<h2 id="ecuaciones-diferenciales">Ecuaciones diferenciales</h2>
+<p>$P$: número de habitantes (Miles o Millones).</p>
+<p>$t$: Tiempo (Años).</p>
+<p>$\frac{dP}{dt}$: Razón de cambio, velocidad de crecimiento.</p>
+<p>$P(t)$: Número de habitanntes en el tiempo $t$.</p>
+<p>$P(2)=30$: &quot;Pasados dos años hay treinta mil habitantes&quot;.</p>
+<p>$P'(5)=6$: &quot;Al quinto año, la velocidad de crecimiento es de seis mil habitantes por año ($6\frac{hab}{año}$)&quot;.</p>
+<p>Esa información la da el experimento</p>
+<p>Decimos que $A$ es directamente proporcional a $B$ si y solo si $A\propto B$, $A=KB$.</p>
+<p>$$\frac{dP}{dt}=kP(t) \text{ Ecuación diferencial ordinaria separable}$$</p>
+<p>Decimos que $A$ es inverdamente proporcional a $B$ si y solo si $A=\frac{k}{B}$.</p>
+<h2 id="diferencias-entre-dydx-y-delta-ydelta-x">Diferencias entre $dy,:dx$ y  $\Delta y,:\Delta x$</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Aproximación</th>
+<th style="text-align:center">Cambios (Valores exactos)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$dy,:dx$</td>
+<td style="text-align:center">$\Delta y,:\Delta x$</td>
+</tr>
+</tbody>
+</table>
+<p>$$\frac{dy}{dx}=f'(x)$$</p>
+<p>$$\frac{\Delta y}{\Delta x}=\frac{y_2-y_1}{x_2-x_1}\text{ pendiente}$$</p>
+<p>A estos los une un límite</p>
+<p>$$\frac{dy}{dx}=\lim_{\Delta x\to0}{\frac{\Delta x}{\Delta y}}$$</p>
+<blockquote>
+<p>Definición:</p>
+</blockquote>
+<pre><code>Una ecuación diferencial ordinaria de dice separable si tiene la forma de.
+</code></pre>
+<p>$$\frac{dy}{dx}=f(x)g(y)$$
+$$\frac{dy}{g(y)}=f(x)dx$$</p>
+<h2 id="teor%C3%ADa-de-ecuaciones-diferenciales-ordinarias-edo">Teoría de ecuaciones diferenciales ordinarias (EDO)</h2>
+<blockquote>
+<p>Ordinarias:</p>
+</blockquote>
+<pre><code>&quot;Solo hay una variable independiente&quot;.
+</code></pre>
+<blockquote>
+<p>Definición: Orden de una EDO</p>
+</blockquote>
+<pre><code>Es el orden de la derivada mayor.
+</code></pre>
+<blockquote>
+<p>Definición: Grado de una EDO</p>
+</blockquote>
+<pre><code>Es la potenciaque tenga la derivada de mayor orden.
+</code></pre>
+<p>Una EDO lineal de orden $n$ se escribe como:
+$$a_n(x)\frac{d^ny}{dx^n}+a_{n-1}(x)\frac{d^{n-1}y}{dx^{n-1}}+\dotsb+a_1(x)\frac{dy}{dx}+a_0(x)y=g(x)$$</p>
+<h3 id="soluci%C3%B3n-a-una-edo-de-orden-y-grado-uno">Solución a una EDO de orden y grado uno</h3>
+<p>Sea $a_1(x)y'+a_0(x)y=g(x)$, procedemos a anular el coeficiente $a_1$.</p>
+<p>$$\frac{a_1(x)y'+a_0(x)y=g(x)}{a_1(x)}$$
+$$y'+\frac{a_0(x)}{a_1(x)}y=\frac{g(x)}{a_1(x)}$$
+$$y'+P(x)y=Q(x) \text{...(1)}$$</p>
+<p>Ahora multiplicamos por el factor integrante $\mu(x)$
+$$\mu(x)y'+\mu(x)P(x)y=\mu(x)Q(x) \text{...(2)}$$
+Buscamos que
+$$\frac{d}{dx}\left(\mu(x)y\right)=\mu(x)y'+\mu(x)'y$$
+Sumamos y restamos $\mu(x)'y$ en la ecuación $\text{(2)}$
+$$\mu(x)y'+\mu(x)P(x)y+\mu(x)'y-\mu(x)'y=\mu(x)Q(x)$$
+$$\mu(x)P(x)y-\mu(x)'y=0$$
+$$y(\mu(x)P(x)-\mu(x)')=0$$
+$$\mu(x)P(x)-\mu(x)'=0\text{ Pues $y$ no puede ser 0}$$
+$$\mu(x)P(x)-\frac{d\mu}{dx}=0$$
+$$\mu(x)P(x)=\frac{d\mu}{dx}$$
+$$P(x)dx=\frac{d\mu}{\mu(x)}$$
+Integramos
+$$\int{P(x)dx}=ln(\mu(x))$$
+$$exp\left(\int{P(x)dx}\right)=\mu(x)$$
+Por lo tanto
+$$\mu(x)=e^{\int{P(x)dx}}$$
+Luego
+$$(\mu(x)y)'=Q(x)\mu(x)$$
+$$\frac{d(\mu(x)y)}{dx}=Q(x)\mu(x)$$
+$$yd\mu(x)=Q(x)\mu(x)dx$$
+Integramos
+$$y\int{d\mu(x)}=\int{Q(x)\mu(x)dx}$$
+Por lo tanto
+$$y=\frac{\int{Q(x)\mu(x)dx}}{\mu(x)}$$
+$$y=\frac{\int{Q(x)e^{\int{P(x)dx}}dx}}{e^{\int{P(x)dx}}}$$</p>
+
+</body>
+</html>
